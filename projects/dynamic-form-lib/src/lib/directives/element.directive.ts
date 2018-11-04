@@ -1,13 +1,13 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[mPElementTemplate]',
+  selector: '[mpElementTemplate]',
   host:{}
 })
 export class ElementDirective {
   @Input() type: string;
   
-  @Input('mTemplate') name: string;
+  @Input('mpElementTemplate') name: string;
   
   constructor(public template: TemplateRef<any>) {}
   

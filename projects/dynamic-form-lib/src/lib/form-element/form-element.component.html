@@ -52,8 +52,8 @@
     </div>
 
     <ng-template ngFor let-template [ngForOf]="custom_element_templates" let-i="index">
-      <div *ngSwitchCase="template.getType()">
-        <ng-container *ngTemplateOutlet="template; context: {$implicit: element}"></ng-container>
+      <div *ngIf="template.getType() == element.type">
+        <ng-container *ngTemplateOutlet="template.template; context: {$implicit: element}"></ng-container>
       </div>
     </ng-template>
 

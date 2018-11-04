@@ -32,6 +32,11 @@ export class AppComponent {
   get first(){
     return ecForm[0];
   }
+
+  formChange(event : any){
+    debugger;
+    console.log('FORM: Change Value Event');
+  }
   
 }
 
@@ -46,6 +51,8 @@ const ecForm: Base<any>[] = [
                       ]
                   }),
   new Numberbox({key: 'rckMin',       label: 'Rck',   required:true,    order: 4, min:0,  max:100,  step:1  }),
+  //Prova per il template Custom 
+  {type:'pippo', key: 'prova',         label: 'Label della prova ',            order: 5 }
 ];
 
 /**

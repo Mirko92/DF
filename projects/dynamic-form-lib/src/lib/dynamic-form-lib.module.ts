@@ -9,9 +9,9 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SpinnerModule } from 'primeng/spinner';
 import { DialogDynamicFormComponent } from './dialog-dynamic-form/dialog-dynamic-form.component';
+import { ElementDirective } from './directives/element.directive';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { FormElementComponent } from './form-element/form-element.component';
-import { ElementDirective } from './directives/element.directive';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { ElementDirective } from './directives/element.directive';
   exports: [
     FormElementComponent, 
     DialogDynamicFormComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    ElementDirective
   ]
 })
 export class DynamicFormLibModule { }
