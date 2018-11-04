@@ -1,9 +1,9 @@
-<form [formGroup]="form"
+<form [formGroup]="_form"
       autocomplete="off">
 
   <div *ngFor="let element of elements">
     <MP-form-element [element]="element"
-                     [form]="form"
+                     [form]="_form"
                      [custom_element_templates]="custom_element_templates">
     </MP-form-element>
   </div>
