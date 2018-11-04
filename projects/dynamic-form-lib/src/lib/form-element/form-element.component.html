@@ -1,0 +1,87 @@
+<div [formGroup]="form"
+     class="dynamic-element">
+  <label [attr.for]="element.key"
+         [ngClass]="{'required' : element.required}"
+         style="margin-bottom: 0.1em;"><strong>{{element.label }}</strong></label>
+
+  <div [ngSwitch]="element.controlType">
+
+    <input *ngSwitchCase="'textbox'" 
+           [id]="element.key"
+           class="w-95" pInputText
+           [type]="element.type"
+           [formControlName]="element.key"
+           [maxlength]="element?.maxLength"
+           (blur)="textOnBlur($event, element)" />
+
+    <p-spinner *ngSwitchCase="'number'"
+               [formControlName]="element.key"
+               [step]="element.step||1"
+               [min]="element.min"
+               [max]="element.max"
+               (onBlur)="numberOnBlur($event, element)"></p-spinner>
+
+    <p-dropdown *ngSwitchCase="'dropdown'"
+                [options]="element.options"
+                [formControlName]="element.key"
+                [placeholder]="element.defaultLabel "
+                styleClass="w-95"
+                [autoWidth]="false">
+      <ng-template let-opt
+                   pTemplate="selectedItem">
+        {{ opt.label }}
+      </ng-template>
+      <ng-template let-opt
+                   pTemplate="item">
+        {{ opt.label }}
+      </ng-template>
+    </p-dropdown>
+
+    <p-multiSelect *ngSwitchCase="'multiselect'"
+                   [options]="element.options"
+                   [formControlName]="element.key"
+                   [defaultLabel]="element.defaultLabel "
+                   styleClass="w-95"></p-multiSelect>
+
+    <div *ngSwitchCase="'radio'">
+      <p-radioButton *ngFor="let o of element.options"
+                     [name]="element.groupName"
+                     [value]="o.value"
+                     [label]="o.label "
+                     [formControlName]="element.key"></p-radioButton>
+    </div>
+
+    <ng-template ngFor let-template [ngForOf]="custom_element_templates" let-i="index">
+      <div *ngSwitchCase="template.getType()">
+        <ng-container *ngTemplateOutlet="template; context: {$implicit: element}"></ng-container>
+      </div>
+    </ng-template>
+
+  </div>
+
+  <div class="ui-messages-error no-back w-95 centered"
+       *ngIf="!isValid && form.get(element.key)?.touched">
+       Field Required
+  </div>
+  <div class="ui-messages-error no-back w-95 centered"
+       *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('min')">
+      Min value: {{element.min}}
+  </div>
+  <div class="ui-messages-error no-back w-95 centered"
+       *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('max')">
+      Max value: {{element.max}}
+  </div>
+  <div class="ui-messages-error no-back w-95 centered"
+       *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('minlength')">
+      Min Length: {{element.minLength}}
+  </div>
+  <div class="ui-messages-error no-back w-95 centered"
+       *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('maxlength')">
+      Max Length: {{element.maxLength}}
+  </div>
+  <div class="ui-messages-error no-back w-95 centered"
+       *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('invalidEmail')">
+      Email not valid
+  </div>
+
+</div>

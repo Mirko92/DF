@@ -1,0 +1,11 @@
+<form [formGroup]="form"
+      autocomplete="off">
+
+  <div *ngFor="let element of elements">
+    <MP-form-element [element]="element"
+                     [form]="form"
+                     [custom_element_templates]="custom_element_templates">
+    </MP-form-element>
+  </div>
+
+</form>
