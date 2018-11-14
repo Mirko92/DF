@@ -16,36 +16,50 @@ export class DynamicFormComponent implements OnChanges {
    * [BUG] - NgPackagr non comprende l'ereditarietà
    */
   @Input() 
-  public elements: any[] = [];
+  elements: any[] = [];
   
   /**
    * Oggetto contenitore e destinatario dei valori costruiti dalla form 
    */
   @Input() 
-  public target: any;
+  target: any;
   @Output()
-  public targetChange = new EventEmitter<any>();
+  targetChange = new EventEmitter<any>();
 
+  /**
+   * Evento di output
+   * Espone all'esterno la form al momento della creazione
+   */
+  @Output()
+  public form = new EventEmitter<FormGroup>();
+
+  _form: FormGroup;
+  
   @ContentChildren(ElementDirective) 
   custom_element_templates : QueryList<any>;
-
-  // @Output('form')
-  // public onFormChange = new EventEmitter<FormGroup>();
-  _form: FormGroup;
  
   constructor(private _formSVC: FormControlService) {  }
 
   ngOnChanges(changes : SimpleChanges){
     if ( changes['elements']){
-      this._form = this._formSVC.toFormGroup(this.elements);
+      this.buildForm(this.elements);
     }
     if ( changes['target'] && !changes['target'].firstChange){
       if ( this.target.id ){
-        this._form = this._formSVC.toFormGroup(this.elements, this.target);
+        this.buildForm(this.elements, this.target);
       }
     }
+  }
 
-    // this.onFormChange.emit(this._form);
+  /**
+   * Costruisce la form e la espone all'esterno del componente 
+   * @param elements 
+   * @param target 
+   */
+  private buildForm(elements :any[], target? :any){
+    this._form = this._formSVC.toFormGroup(elements, target);
+
+    this.form.emit(this._form);
   }
 
 }

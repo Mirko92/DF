@@ -31,6 +31,7 @@ export class FormControlService {
         (<Textbox>element).minLength ? vs.push(Validators.maxLength((<Textbox>element).maxLength)) : null;
       }
 
+      /* Aggiungo i validatori custom passati dall'esterno */
       if ( element.customValidators && element.customValidators.length > 0){
         vs = [...vs, ...element.customValidators];
       }
@@ -44,6 +45,3 @@ export class FormControlService {
   }
 
 }
-
-
-// first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),

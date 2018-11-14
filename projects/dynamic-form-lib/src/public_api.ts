@@ -2,7 +2,6 @@
  * Public API Surface of dynamic-form-lib
  */
 
-export * from './lib/dialog-dynamic-form/dialog-dynamic-form.component';
 //DIRECTIVES
 export * from './lib/directives/element.directive';
 export * from './lib/dynamic-form-lib.module';
