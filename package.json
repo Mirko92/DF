@@ -13,7 +13,6 @@
     "npm_pack": "cd dist/dynamic-form-lib && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
     "package_prod": "npm run build_lib_prod && npm run npm_pack"
-
   },
   "private": true,
   "dependencies": {
