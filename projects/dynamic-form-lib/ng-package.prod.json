@@ -3,5 +3,8 @@
   "dest": "../../dist/dynamic-form-lib",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "primeng"
+  ]
 }

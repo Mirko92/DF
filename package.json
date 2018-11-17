@@ -27,7 +27,7 @@
     "@angular/router": "^6.0.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
-    "primeng": "^5.2.7",
+    "primeng": "^6.1.5",
     "rxjs": "^6.0.0",
     "typescript": "~2.7.2",
     "zone.js": "^0.8.26"
