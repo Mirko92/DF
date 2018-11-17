@@ -7,6 +7,7 @@
 -	Al blur dei campi testo, oltre il trim va aggiunto che se la Stringa è '' (vuota) va sostituita con NULL [OPZIONE DISATTIVABILE]
 -	Il tema ngPrime dovrebbe essere una dependencies 
 -	Aggiunti commenti e funzionalità in smartlab:
+- Mettere il più possibile codice in comune 
 
   /**
    * Configurazione FORM 

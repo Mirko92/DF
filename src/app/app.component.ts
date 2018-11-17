@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Base, FormControlService, Numberbox, RadioOptions, Textbox } from 'dynamic-form-lib';
+import { Base, DynamicDialogFormService, FormControlService, Numberbox, RadioOptions, Textbox } from 'dynamic-form-lib';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent {
 
   public target : any = {};
 
-  constructor(private _formControlSVC : FormControlService){
+  constructor(private _formControlSVC : FormControlService, private dialogSVC : DynamicDialogFormService){
     console.debug(`APP_COMPONENT: Constructor`);
   }
 
@@ -36,6 +36,10 @@ export class AppComponent {
   formChange(event : any){
     debugger;
     console.log('FORM: Change Value Event');
+  }
+
+  showDialog(){
+    this.dialogSVC.showDialog(null);
   }
   
 }

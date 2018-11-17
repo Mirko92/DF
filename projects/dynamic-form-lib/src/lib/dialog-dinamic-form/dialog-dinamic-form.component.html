@@ -1,0 +1,16 @@
+aaa
+<p-dialog [(visible)]="visible"
+          [modal]="true"
+          [blockScroll]="true"
+          (onHide)="onHide()">
+  <p-header>
+    {{header}}
+  </p-header>
+
+  
+
+  <p-footer>
+      <p-button (onClick)="onSaveClick()" [label]="saveLabel"></p-button>
+      <p-button (onClick)="onCancelClick()" [label]="cancelLabel"></p-button>
+  </p-footer>
+</p-dialog>
