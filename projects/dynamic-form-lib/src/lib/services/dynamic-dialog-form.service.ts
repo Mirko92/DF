@@ -1,4 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector } from '@angular/core';
+import { Base } from 'dynamic-form-lib/public_api';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class DynamicDialogFormService {
 
   }
 
-  appendComponentToBody(component: any) {
+  private appendComponentToBody(component: any) {
     // 1. Create a component reference from the component 
     const componentRef = this.componentFactoryResolver
       .resolveComponentFactory(component)
@@ -33,5 +34,9 @@ export class DynamicDialogFormService {
         this.appRef.detachView(componentRef.hostView);
         componentRef.destroy();
     }, 3000);
+  }
+
+  public showDialog(formConfig : Base<any>[]){
+
   }
 }
