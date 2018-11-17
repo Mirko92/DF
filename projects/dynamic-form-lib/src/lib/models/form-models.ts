@@ -1,6 +1,10 @@
 
 export abstract class Base<T> {
     /**
+     * Tipo del campo
+     */
+    public type?:string;
+    /**
      * Valore del campo 
      */
     public value?: T;

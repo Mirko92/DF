@@ -6,9 +6,9 @@
 
   <div [ngSwitch]="element.controlType">
 
-    <input *ngSwitchCase="'textbox'" 
+    <input *ngSwitchCase="'textbox'"
            [id]="element.key"
-           class="w-95" pInputText
+           pInputText
            [type]="element.type"
            [formControlName]="element.key"
            [maxlength]="element?.maxLength"
@@ -59,27 +59,27 @@
 
   </div>
 
-  <div class="ui-message ui-messages-error no-back w-95 centered"
+  <div class="ui-message ui-message-error no-back w-95 centered"
        *ngIf="!isValid && form.get(element.key)?.touched">
        Field Required
   </div>
-  <div class="ui-message ui-messages-error no-back w-95 centered"
+  <div class="ui-message ui-message-error no-back w-95 centered"
        *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('min')">
       Min value: {{element.min}}
   </div>
-  <div class="ui-message ui-messages-error no-back w-95 centered"
+  <div class="ui-message ui-message-error no-back w-95 centered"
        *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('max')">
       Max value: {{element.max}}
   </div>
-  <div class="ui-message ui-messages-error no-back w-95 centered"
+  <div class="ui-message ui-message-error no-back w-95 centered"
        *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('minlength')">
       Min Length: {{element.minLength}}
   </div>
-  <div class="ui-message ui-messages-error no-back w-95 centered"
+  <div class="ui-message ui-message-error no-back w-95 centered"
        *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('maxlength')">
       Max Length: {{element.maxLength}}
   </div>
-  <div class="ui-message ui-messages-error no-back w-95 centered"
+  <div class="ui-message ui-message-error no-back w-95 centered"
        *ngIf="!isValid && form.get(element.key)?.touched && form.get(element.key).hasError('invalidEmail')">
       Email not valid
   </div>

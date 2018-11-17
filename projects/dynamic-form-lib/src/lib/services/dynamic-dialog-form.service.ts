@@ -1,5 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, EventEmitter, Injectable, Injector, Type } from '@angular/core';
-import { DialogDinamicFormComponent } from '../dialog-dinamic-form/dialog-dinamic-form.component';
+import { DialogDynamicFormComponent } from '../dialog-dynamic-form/dialog-dynamic-form.component';
 import { DialogConfig } from '../models/dialogConfig';
 import { Base } from '../models/form-models';
 
@@ -64,10 +64,10 @@ export class DynamicDialogFormService {
     if (this.componentRef != null ) return;
 
     // 1. Create a component reference from the component 
-    this.componentRef = this.createComponentReference(DialogDinamicFormComponent);
+    this.componentRef = this.createComponentReference(DialogDynamicFormComponent);
 
     // 2. Initialize Component's properties
-    (this.componentRef.instance as DialogDinamicFormComponent).init(formConfig, dialogConfig);
+    (this.componentRef.instance as DialogDynamicFormComponent).init(formConfig, dialogConfig);
 
     // 3. Attach component to the appRef so that it's inside the ng component tree
     this.appRef.attachView(this.componentRef.hostView);
@@ -87,18 +87,19 @@ export class DynamicDialogFormService {
    * Hide dialog, and remove it from DOM
    */
   public hideAndRemoveDialog(){
-    (this.componentRef.instance as DialogDinamicFormComponent).hide();
+    (this.componentRef.instance as DialogDynamicFormComponent).hide();
 
     // this.onSave.unsubscribe();
 
     this.removeElement(this.componentRef);
+
+    this.componentRef = null;
   }
 
 
-  public _onSave(){
-    // this.displayDialog = false;
+  public _onSave(result :any ){
     if ( this.onSave ){
-      this.onSave.emit('Dialog chiuso');
+      this.onSave.emit(result);
     }
   }
 }

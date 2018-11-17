@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { DynamicFormComponent } from '../dynamic-form/dynamic-form.component';
 import { DialogConfig } from '../models/dialogConfig';
 import { DynamicDialogFormService } from '../services/dynamic-dialog-form.service';
 
 @Component({
-  selector: 'MP-dialog-dinamic-form',
-  templateUrl: './dialog-dinamic-form.component.html',
-  styleUrls: ['./dialog-dinamic-form.component.css']
+  selector: 'MP-dialog-dynamic-form',
+  templateUrl: './dialog-dynamic-form.component.html',
+  styleUrls: ['./dialog-dynamic-form.component.css']
 })
-export class DialogDinamicFormComponent{
+export class DialogDynamicFormComponent{
 
   /**
    * Gestisce la visibilità del DIALOG
@@ -25,23 +26,38 @@ export class DialogDinamicFormComponent{
    */
   elements: any[] = [];
 
+
+  public target : any = {};
+
   saveLabel : string = "Salva";
 
   cancelLabel : string = "Chiudi";
+
+  @ViewChild('dialogForm')
+  dynamicForm : DynamicFormComponent;
 
   constructor(private dialogSVC : DynamicDialogFormService) { }
 
   init(elements: any[], config? : DialogConfig){
     this.header = (config && config.header)||"Form Dinamica";
 
+    this.elements = elements;
 
     this.visible = true;
   }
 
+  /**
+   * Handler 'OnClick' save button event
+   */
   onSaveClick(){
-    this.visible = false;
+    let form = this.dynamicForm._form;
+
+    this.dialogSVC._onSave(form);
   }
 
+  /**
+   * Handler 'OnClick' cancel button event 
+   */
   onCancelClick(){
     this.hide();
   }
@@ -50,6 +66,9 @@ export class DialogDinamicFormComponent{
     this.visible = false;
   }
 
+  /**
+   * Handler 'OnHide' dialog event 
+   */
   onHide(){
     this.dialogSVC.hideAndRemoveDialog()
   }

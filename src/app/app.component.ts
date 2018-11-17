@@ -39,13 +39,20 @@ export class AppComponent {
   }
 
   showDialog(){
-    this.dialogSVC.showDialog(null);
+    let result = this.dialogSVC.showDialog(ecForm);
+
+    debugger;
+
+    result.subscribe(x => {
+      console.debug("Salvataggio form: ", x);
+    })
   }
   
 }
 
-const ecForm: Base<any>[] = [
+const baseForm : Base<any>[] = [
   new Textbox({     key: 'code',         label: 'Code',         required:true,    order: 1,   minLength:1,   maxLength:16, customValidators:[emailValidator]  }),
+  new Textbox({     key: 'ert',          label: 'ERT',          required:true,    order: 6,   minLength:1,   maxLength:16 }),
   new Numberbox({   key: 'wcRatio',      label: 'A/C',          required:true,    order: 2,   min:0,  max:2,    step:0.001  }),
   new Numberbox({   key: 'minCement',    label: 'Min Cement',   required:true,    order: 3,   min:0,  max:2000, step:1 }),
   new RadioOptions({key: 'isAirPresent', label: 'Air',          required:true,    order: 5,   
@@ -54,10 +61,11 @@ const ecForm: Base<any>[] = [
                         {label:'NO',   value:false},
                       ]
                   }),
-  new Numberbox({key: 'rckMin',       label: 'Rck',   required:true,    order: 4, min:0,  max:100,  step:1  }),
-  //Prova per il template Custom 
-  {type:'pippo', key: 'prova',         label: 'Label della prova ',            order: 5 }
+  new Numberbox({key: 'rckMin',       label: 'Rck',   required:true,    order: 4, min:0,  max:100,  step:1  })
 ];
+
+const ecForm: Base<any>[] = [...baseForm, {type:'pippo', key: 'prova',         label: 'Label della prova ',            order: 5 }];
+
 
 /**
  * Validatore Custom per le email inserite nelle form 

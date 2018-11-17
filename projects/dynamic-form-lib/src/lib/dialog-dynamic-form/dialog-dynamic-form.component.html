@@ -1,13 +1,20 @@
-aaa
 <p-dialog [(visible)]="visible"
+
           [modal]="true"
           [blockScroll]="true"
+
+          [responsive]="true"
+          [minWidth]="350"
+          
+          [closable]="true"
+          [closeOnEscape]="true"
+          
           (onHide)="onHide()">
   <p-header>
     {{header}}
   </p-header>
 
-  
+  <MP-dynamic-form #dialogForm [elements]="elements" class="ui-fluid"></MP-dynamic-form>
 
   <p-footer>
       <p-button (onClick)="onSaveClick()" [label]="saveLabel"></p-button>

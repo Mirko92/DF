@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DialogDynamicFormComponent } from './dialog-dynamic-form.component';
 
-import { DialogDinamicFormComponent } from './dialog-dinamic-form.component';
 
-describe('DialogDinamicFormComponent', () => {
-  let component: DialogDinamicFormComponent;
-  let fixture: ComponentFixture<DialogDinamicFormComponent>;
+describe('DialogDynamicFormComponent', () => {
+  let component: DialogDynamicFormComponent;
+  let fixture: ComponentFixture<DialogDynamicFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogDinamicFormComponent ]
+      declarations: [ DialogDynamicFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogDinamicFormComponent);
+    fixture = TestBed.createComponent(DialogDynamicFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

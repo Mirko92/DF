@@ -8,7 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SpinnerModule } from 'primeng/spinner';
-import { DialogDinamicFormComponent } from './dialog-dinamic-form/dialog-dinamic-form.component';
+import { DialogDynamicFormComponent } from './dialog-dynamic-form/dialog-dynamic-form.component';
 import { ElementDirective } from './directives/element.directive';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { FormElementComponent } from './form-element/form-element.component';
@@ -30,7 +30,7 @@ import { FormElementComponent } from './form-element/form-element.component';
     FormElementComponent,
     DynamicFormComponent,
     ElementDirective,
-    DialogDinamicFormComponent
+    DialogDynamicFormComponent
   ],
   exports: [
     FormElementComponent, 
@@ -38,7 +38,7 @@ import { FormElementComponent } from './form-element/form-element.component';
     ElementDirective
   ],
   entryComponents:[
-    DialogDinamicFormComponent
+    DialogDynamicFormComponent
   ]
 })
 export class DynamicFormLibModule { }
