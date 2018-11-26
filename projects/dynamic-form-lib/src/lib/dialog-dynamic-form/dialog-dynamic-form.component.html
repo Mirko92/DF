@@ -14,7 +14,7 @@
     {{header}}
   </p-header>
 
-  <MP-dynamic-form #dialogForm [elements]="elements" class="ui-fluid"></MP-dynamic-form>
+  <MP-dynamic-form #dialogForm [elements]="elements" [(target)]="target" class="ui-fluid"></MP-dynamic-form>
 
   <p-footer>
       <p-button (onClick)="onSaveClick()" [label]="saveLabel"></p-button>

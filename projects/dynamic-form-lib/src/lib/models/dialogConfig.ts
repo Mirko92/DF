@@ -2,11 +2,11 @@ export interface DialogConfig {
     /**
      * Title in the dialog header 
      */
-    header : string;
+    header? : string;
 
     /**
      * Object target for the form    
      * Used to initialize the form     
      */
-    target : any;
+    target? : any;
 }
