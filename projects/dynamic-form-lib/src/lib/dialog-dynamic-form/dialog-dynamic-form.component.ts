@@ -43,6 +43,8 @@ export class DialogDynamicFormComponent{
 
     this.elements = elements;
 
+    this.target = config.target;
+
     this.visible = true;
   }
 
