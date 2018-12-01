@@ -41,14 +41,21 @@ export class DynamicFormComponent implements OnChanges {
   constructor(private _formSVC: FormControlService) {  }
 
   ngOnChanges(changes : SimpleChanges){
-    if ( changes['elements']){
-      this.buildForm(this.elements);
-    }
-    if ( changes['target'] && !changes['target'].firstChange){
+    console.debug("DynamicFormComponent.OnChange", changes); //TODO: Controllare che non funzioni in prod 
+
+    if ( changes['target']){
+      console.debug("Cambiamento rilevato in target");
       if ( this.target.id ){
+        console.debug("Target ha un ID");
         this.buildForm(this.elements, this.target);
       }
+    }else{
+      if ( changes['elements']){
+        console.debug("Cambiamento rilevato in elements"); //TODO: Controllare che non funzioni in prod 
+        this.buildForm(this.elements);
+      }
     }
+
   }
 
   /**
@@ -57,6 +64,7 @@ export class DynamicFormComponent implements OnChanges {
    * @param target 
    */
   private buildForm(elements :any[], target? :any){
+    console.debug("DynamicFormComponent.buildForm", elements, target); //TODO: Controllare che non funzioni in prod 
     this._form = this._formSVC.toFormGroup(elements, target);
 
     this.form.emit(this._form);

@@ -13,7 +13,9 @@
     "build_lib": "ng build dynamic-form-lib",
     "npm_pack": "cd dist/dynamic-form-lib && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
-    "package_prod": "npm run build_lib_prod && npm run npm_pack"
+    "package_run": "npm run build_lib && npm run npm_pack && ng s -o",
+    "package_prod": "npm run build_lib_prod && npm run npm_pack",
+    "package_prod_run": "npm run build_lib && npm run npm_pack && ng s -o"
   },
   "private": true,
   "dependencies": {

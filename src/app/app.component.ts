@@ -39,7 +39,12 @@ export class AppComponent {
   }
 
   showDialog(){
-    let result = this.dialogSVC.showDialog(ecForm);
+    let result = this.dialogSVC.showDialog(ecForm, { target:  { code:"Ciao", 
+                                                                ert:"Ciaone",
+                                                                id:1
+                                                              }
+                                                    }
+                                          );
 
     debugger;
 
